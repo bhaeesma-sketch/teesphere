@@ -106,6 +106,23 @@
             delay: 1.5,
             force3D: true
         });
+
+        // Hero Mouse Parallax
+        document.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const xPos = (clientX / window.innerWidth - 0.5) * 40;
+            const yPos = (clientY / window.innerHeight - 0.5) * 40;
+
+            gsap.to('.hero-tshirt', {
+                x: xPos,
+                y: yPos,
+                rotationY: xPos * 0.2,
+                rotationX: -yPos * 0.2,
+                duration: 1,
+                ease: 'power2.out',
+                force3D: true
+            });
+        });
     }
 
     // ═══════════════════════════════════════
@@ -133,14 +150,15 @@
             gsap.from(el, {
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 85%',
+                    start: 'top 90%',
                     toggleActions: 'play none none none',
                 },
-                scale: 0.88,
+                scale: 0.9,
+                y: 30,
                 opacity: 0,
-                duration: 1,
-                delay: i * 0.15,
-                ease: 'power3.out',
+                duration: 1.2,
+                delay: (i % 3) * 0.1,
+                ease: 'expo.out',
             });
         });
 
