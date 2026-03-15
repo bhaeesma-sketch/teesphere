@@ -350,7 +350,7 @@
             price: 28.500,
             tag: 'Bestseller',
             desc: 'A structural masterpiece crafted from 300 GSM heavy-weight cotton. The Obsidian Oversized tee defines modern luxury silhouette with dropped shoulders and a meticulous charcoal-black finish.',
-            img: 'assets/hyper-back.png',
+            img: 'assets/hyper-back-real.png',
             weight: '300 GSM'
         },
         'vision-essential': {
