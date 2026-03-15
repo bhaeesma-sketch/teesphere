@@ -1,8 +1,4 @@
-/* ═══════════════════════════════════════════════════════
-   TEESPHERE — GSAP-Powered Interactive JavaScript
-   GSAP ScrollTrigger, Parallax, Count-Up, Floating Text
-   ═══════════════════════════════════════════════════════ */
-
+document.addEventListener('DOMContentLoaded', () => {
 (function () {
     'use strict';
 
@@ -194,13 +190,14 @@
 
         // Journey cards — staggered hover-lift animation
         gsap.utils.toArray('.journey-card').forEach((card) => {
+            const num = card.querySelector('.journey-number');
             card.addEventListener('mouseenter', () => {
                 gsap.to(card, { y: -8, duration: 0.4, ease: 'power2.out' });
-                gsap.to(card.querySelector('.journey-number'), { opacity: 0.6, duration: 0.3 });
+                if (num) gsap.to(num, { opacity: 0.6, duration: 0.3 });
             });
             card.addEventListener('mouseleave', () => {
                 gsap.to(card, { y: 0, duration: 0.4, ease: 'power2.out' });
-                gsap.to(card.querySelector('.journey-number'), { opacity: 0.3, duration: 0.3 });
+                if (num) gsap.to(num, { opacity: 0.3, duration: 0.3 });
             });
         });
 
@@ -210,12 +207,12 @@
             const tag = item.querySelector('.collection-item-tag');
 
             item.addEventListener('mouseenter', () => {
-                gsap.to(img, { scale: 1.08, filter: 'brightness(1) contrast(1.1)', duration: 0.8, ease: 'power2.out' });
-                gsap.to(tag, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+                if (img) gsap.to(img, { scale: 1.08, filter: 'brightness(1) contrast(1.1)', duration: 0.8, ease: 'power2.out' });
+                if (tag) gsap.to(tag, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
             });
             item.addEventListener('mouseleave', () => {
-                gsap.to(img, { scale: 1, filter: 'brightness(0.8) contrast(1.1)', duration: 0.8, ease: 'power2.out' });
-                gsap.to(tag, { opacity: 0, y: -10, duration: 0.4, ease: 'power2.out' });
+                if (img) gsap.to(img, { scale: 1, filter: 'brightness(0.95) contrast(1.05)', duration: 0.8, ease: 'power2.out' });
+                if (tag) gsap.to(tag, { opacity: 0, y: -10, duration: 0.4, ease: 'power2.out' });
             });
         });
     }
@@ -257,7 +254,7 @@
     //  COUNT-UP (Stats)
     // ═══════════════════════════════════════
     function initCountUp() {
-        gsap.utils.toArray('.stat-num').forEach((num) => {
+        gsap.utils.toArray('.stat-number').forEach((num) => {
             const val = parseInt(num.textContent);
             num.textContent = '0';
             gsap.to(num, {
@@ -277,7 +274,8 @@
     //  MARQUEE (Infinite Loop)
     // ═══════════════════════════════════════
     function initMarquee() {
-        const marquee = document.querySelector('.marquee-inner');
+        // Sync with index.html: .marquee-track instead of .marquee-inner
+        const marquee = document.querySelector('.marquee-track');
         if (!marquee) return;
         
         // Clone for seamless loop
@@ -285,7 +283,7 @@
 
         gsap.to(marquee, {
             xPercent: -50,
-            duration: 30, // Slower for smoothness
+            duration: 60, // Much slower for ultra-premium feel
             repeat: -1,
             ease: 'none',
             force3D: true
@@ -296,6 +294,7 @@
     //  FLOATING TEXT
     // ═══════════════════════════════════════
     function initFloatingText() {
+        // Only target existing floating texts
         const texts = ['#floatingText1', '#floatingText2', '#floatingText3'];
         texts.forEach((id, i) => {
             const el = document.querySelector(id);
@@ -304,7 +303,7 @@
             gsap.to(el, {
                 y: -20,
                 x: i % 2 === 0 ? 10 : -10,
-                opacity: 0.4,
+                opacity: 0.15, // Reduced to avoid clutter
                 duration: 5 + i,
                 repeat: -1,
                 yoyo: true,
@@ -323,16 +322,15 @@
 
         const globe = logo.querySelector('.logo-globe');
         const orbit = logo.querySelector('.logo-orbit');
-        const star1 = logo.querySelector('.logo-star-1');
-        const star2 = logo.querySelector('.logo-star-2');
+        if (!globe || !orbit) return;
 
         const circumference = 2 * Math.PI * 185;
         gsap.set(orbit, { strokeDasharray: circumference, strokeDashoffset: circumference });
 
         // Entrance
         logo.addEventListener('mouseenter', () => {
-            gsap.to(globe, { rotation: 360, duration: 2, ease: 'power2.inOut' });
-            gsap.to(orbit, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.out' });
+            if (globe) gsap.to(globe, { rotation: 360, duration: 2, ease: 'power2.inOut' });
+            if (orbit) gsap.to(orbit, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.out' });
         });
 
         // Infinite states
@@ -642,7 +640,7 @@
     // ═══════════════════════════════════════
     //  INIT
     // ═══════════════════════════════════════
-    initHeroAnimations();
+    // initHeroAnimations is called via loader onComplete
     initScrollAnimations();
     initParallax();
     initCountUp();
@@ -652,3 +650,4 @@
     initEcommerce();
 
 })();
+});
