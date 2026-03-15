@@ -1,0 +1,13 @@
+{
+  "name": "treesphere",
+  "version": "1.0.0",
+  "description": "TEESPHERE - Premium Streetwear",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve .",
+    "dev": "static-server"
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
+}
