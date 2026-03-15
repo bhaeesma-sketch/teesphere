@@ -350,7 +350,7 @@
             price: 28.500,
             tag: 'Bestseller',
             desc: 'A structural masterpiece crafted from 300 GSM heavy-weight cotton. The Obsidian Oversized tee defines modern luxury silhouette with dropped shoulders and a meticulous charcoal-black finish.',
-            img: 'assets/hyper-back-real.png',
+            img: 'assets/hyper-back.jpeg',
             weight: '300 GSM'
         },
         'vision-essential': {
@@ -358,7 +358,7 @@
             price: 32.000,
             tag: 'New Drop',
             desc: 'The Vision Essential tee is the core of our research. Featuring a custom boxy fit and a unique sepia-toned finish, it represents the intersection of speed and artisan craft.',
-            img: 'assets/jersey-32-new.png',
+            img: 'assets/jersey-32.jpeg',
             weight: '280 GSM'
         },
         'charcoal-research': {
@@ -366,7 +366,7 @@
             price: 35.000,
             tag: 'Limited',
             desc: 'Part of our experimental research drops. This limited edition piece features a high-density print and a structural handle that maintains its shape through every wear.',
-            img: 'assets/hero-tshirt.png',
+            img: 'assets/tshirt_1.png',
             weight: '320 GSM'
         },
         'obsidian-elite': {
@@ -422,7 +422,7 @@
             price: 42.000,
             tag: 'Community',
             desc: 'Special edition Echo Park Wildcats jersey. A tribute to our community roots, featuring premium mesh construction and high-fidelity graphics.',
-            img: 'assets/echo-park-new.png',
+            img: 'assets/echo-park.jpeg',
             weight: 'Mesh / 240 GSM'
         },
         'ford-68': {
@@ -430,25 +430,9 @@
             price: 45.000,
             tag: 'Community',
             desc: 'The Ford 68 jersey. Induced by the golden era of speed. This piece combines vintage racing aesthetics with the TEESPHERE luxury standard.',
-            img: 'assets/ford-68-new.png',
+            img: 'assets/ford-68.jpeg',
             weight: 'Mesh / 240 GSM'
         },
-        'research-lifestyle': {
-            name: 'Research Lifestyle',
-            price: 36.000,
-            tag: 'Community',
-            desc: 'The Research Lifestyle drop. As seen on the streets, this piece is designed for the modern researcher who values both form and utility.',
-            img: 'assets/lifestyle-brown.png',
-            weight: '300 GSM'
-        },
-        'community-event': {
-            name: 'Nahdi Walk Event Tee',
-            price: 30.000,
-            tag: 'Event',
-            desc: 'Exclusive release from the Nahdi Walk event. A piece of TEESPHERE history, celebrating the movement and the voices of our community.',
-            img: 'assets/insta_4.png',
-            weight: '280 GSM'
-        }
     };
 
     let cart = JSON.parse(localStorage.getItem('teesphere_cart')) || [];
